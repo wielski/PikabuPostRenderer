@@ -21,14 +21,11 @@ function StoryRenderer(){
     $('body').append('<div class="renderStoryPreloader" style="z-index: 1000;background: rgba(42,48,62,0.7);color: white;font-family: Arial;line-height: 100vh;text-align: center;position: fixed;width: 100%;top: 0;">Подождите, сохраняем пост как картинку...</div>');
     story = $('[data-story-id="' + story_id + '"]');
     this.hookImages(story);
-    story.find('.b-story__content').css({'margin': '0', 'padding': '0', 'padding-top': '50px'});
-    story.find('.b-story__content_type_text').css({'padding': '', 'padding-top': '20px'})
 
-    if(story.find('.b-story-blocks__wrapper').length > 0){
-      block = story.find('.b-story-blocks__wrapper');
-    } else {
-      block = story.find('.b-story__content');
-    }
+    story.find('.b-story__content').css({'margin': '0'});
+    story.find('.b-story__content_type_media').css({'padding': ''})
+
+    block = story.find('.b-story__content');
 
     html2canvas(block, {
        useCORS: true,
@@ -38,7 +35,7 @@ function StoryRenderer(){
          h = $(window).height();
          window.open(canvas.toDataURL("image/png"), 'Сохраненная картинка', 'width='+w+', height='+h);
          $('.renderStoryPreloader').remove();
-         story.find('.b-story__content').css({'margin': '', 'padding': '', 'padding-top': ''});
+         story.find('.b-story__content').css({'margin': '', 'padding': ''});
        }
     });
   }
