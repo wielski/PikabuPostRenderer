@@ -1,0 +1,16 @@
+{
+ "manifest_version": 2,
+ "name": "Pikabu Render Post",
+ "version": "1.0",
+
+ "content_scripts": [
+   {
+     "matches": [ "*://*/*" ],
+     "js": [ "jquery.min.js", "html2canvas.js", "content.js" ],
+     "run_at": "document_end"
+   }
+ ],
+ "permissions": [
+   "http://pikabu.ru/*"
+ ]
+}
